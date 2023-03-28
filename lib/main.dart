@@ -1,3 +1,4 @@
+import 'package:apidata/screens/album.dart';
 import 'package:apidata/screens/auth/screens/login.dart';
 import 'package:apidata/screens/datascren.dart';
 import 'package:apidata/screens/home.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: PhotoScreen());
+        home: AlbumScreen());
   }
 }
 
