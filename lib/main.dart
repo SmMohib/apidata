@@ -1,5 +1,7 @@
+import 'package:apidata/screens/auth/screens/login.dart';
 import 'package:apidata/screens/datascren.dart';
 import 'package:apidata/screens/home.dart';
+import 'package:apidata/screens/photo.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: const Data());
+        home: PhotoScreen());
   }
 }
 

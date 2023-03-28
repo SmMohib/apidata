@@ -1,12 +1,13 @@
 import 'dart:developer';
-import 'package:apidata/model/data.dart';
-import 'package:apidata/services/constants.dart';
+import 'package:apidata/model/photo_model.dart';
+import 'package:apidata/services/api/constants.dart';
 import 'package:http/http.dart' as http;
-import '../model/user_model.dart';
+import '../../model/user_model.dart';
 
 class ApiService {
   Future<List<UserModel>?> getUsers() async {
     try {
+      
       var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.usersEndpoint);
       var response = await http.get(url);
       if (response.statusCode == 200) {
@@ -16,14 +17,15 @@ class ApiService {
     } catch (e) {
       log(e.toString());
     }
-  } 
-  
-  Future<List<Welcome>?> getdata() async {
+  }
+
+   Future<List<PhotoModel>?> usersPhoto() async {
     try {
-      var url = Uri.parse(ApiConstants.dataurl);
+      
+      var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.photo);
       var response = await http.get(url);
       if (response.statusCode == 200) {
-        List<Welcome> _model = welcomeFromJson(response.body);
+        List<PhotoModel> _model = photoModelFromJson(response.body);
         return _model;
       }
     } catch (e) {

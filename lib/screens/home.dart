@@ -1,5 +1,5 @@
 import 'package:apidata/model/user_model.dart';
-import 'package:apidata/services/api_service.dart';
+import 'package:apidata/services/api/api_service.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {

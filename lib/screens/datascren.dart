@@ -1,9 +1,7 @@
-import 'package:apidata/model/data.dart';
-import 'package:apidata/services/api_service.dart';
-import 'package:flutter/gestures.dart';
+
+import 'package:apidata/model/user_model.dart';
+import 'package:apidata/services/api/api_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class Data extends StatefulWidget {
   const Data({super.key});
@@ -13,14 +11,14 @@ class Data extends StatefulWidget {
 }
 
 class _DataState extends State<Data> {
-  late List<Welcome> welcomemodel = [];
+  late List<UserModel> usermodelmodel = [];
   void initState() {
     super.initState;
     getdata();
   }
 
   void getdata() async {
-    welcomemodel = (await ApiService().getdata())!;
+    usermodelmodel = (await ApiService().getUsers())!;
     Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
   }
 
@@ -28,28 +26,21 @@ class _DataState extends State<Data> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
-        body: welcomemodel == null || welcomemodel.isEmpty
+        body: usermodelmodel == null || usermodelmodel.isEmpty
             ? CircularProgressIndicator()
             : ListView.builder(
-                itemCount: welcomemodel.length,
+                itemCount: usermodelmodel.length,
                 itemBuilder: (context, index) {
                   return Card(
                     child: ListTile(
-                      leading: CircleAvatar(
-                        radius: 30,
-                        backgroundImage:
-                            NetworkImage(welcomemodel[index].avatar.toString()),
-                      ),
-                      title: Text(welcomemodel[index].nama.toString()),
+                      
+                      title: Text(usermodelmodel[index].name.toString()),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(welcomemodel[index].id.toString()),
-                          Text(welcomemodel[index].nama.toString()),
-                          Text(welcomemodel[index].alamat.toString()),
-                          Text(welcomemodel[index].email.toString()),
-                          Text(welcomemodel[index].pekerjaan.toString()),
-                          Text(welcomemodel[index].quote.toString()),
+                          Text(usermodelmodel[index].id.toString()),
+                          Text(usermodelmodel[index].email.toString()),
+                          
                         ],
                       ),
 
